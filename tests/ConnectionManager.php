@@ -1,61 +1,65 @@
 <?php
 
-
 namespace Sentiweb\Rserve\Tests;
 
 use Sentiweb\Rserve\Connection;
 
-class ConnectionManager {
+class ConnectionManager
+{
+    /** @var string|null */
+    protected $host;
 
-    protected ?string $host;
+    /** @var int */
+    protected $port;
 
-    protected int $port;
+    /** @var string|null */
+    protected $username;
 
-    protected ?string $username;
-
-    protected ?string $password;
+    /** @var string|null */
+    protected $password;
 
     public function __construct()
     {
-        $this->host = $this->getvar('RSERVE_HOST');
+        $this->host = $this->getvar("RSERVE_HOST");
 
-        $port = $this->getvar('RSERVE_PORT');
-        if($port) {
-            if($port == '0' || $port == 'unix' || $port == 'socket') {
+        $port = $this->getvar("RSERVE_PORT");
+        if ($port) {
+            if ($port == "0" || $port == "unix" || $port == "socket") {
                 $this->port = 0;
             }
-            if($port == '') {
+            if ($port == "") {
                 $this->port = Connection::DEFAULT_PORT;
             } else {
-                $this->port = (int)$port;
+                $this->port = (int) $port;
             }
         }
-        $this->username = $this->getvar('RSERVE_USER');
-        $this->password = $this->getvar('RSERVE_PASS');
+        $this->username = $this->getvar("RSERVE_USER");
+        $this->password = $this->getvar("RSERVE_PASS");
     }
 
-    protected function getvar(string $name):?string {
-        if(defined($name)) {
+    protected function getvar(string $name): ?string
+    {
+        if (defined($name)) {
             return constant($name);
         }
         $value = getenv($name);
         return $value !== false ? $value : null;
     }
 
-    public function create(bool $requireAuth=false): ?Connection {
-        if(!$this->host) {
+    public function create(bool $requireAuth = false): ?Connection
+    {
+        if (!$this->host) {
             return null;
         }
 
-        if(!$this->username && $requireAuth) {
+        if (!$this->username && $requireAuth) {
             return null;
         }
         $params = [];
-        if($this->username) {
-            $params['username'] = $this->username;
-            $params['password'] = $this->password;
+        if ($this->username) {
+            $params["username"] = $this->username;
+            $params["password"] = $this->password;
         }
         return new Connection($this->host, $this->port, $params);
     }
-
 }
