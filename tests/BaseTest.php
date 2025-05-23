@@ -9,18 +9,21 @@ use PHPUnit\Framework\TestCase;
 
 use Sentiweb\Rserve\Connection;
 
-class BaseTest extends TestCase {
-    
-    protected ConnectionManager $connectionManager;
+class BaseTest extends TestCase
+{
+    /** @var ConnectionManager */
+    protected $connectionManager;
 
-	/**
-	 *
-	 */
-	protected function setUp():void {
+    /**
+     *
+     */
+    protected function setUp(): void
+    {
         $this->connectionManager = new ConnectionManager();
-	}
+    }
 
-    protected function getConnection($withAuth=false): ?Connection {
+    protected function getConnection($withAuth = false): ?Connection
+    {
         return $this->connectionManager->create($withAuth);
     }
 
@@ -29,12 +32,13 @@ class BaseTest extends TestCase {
      *
      * @return string
      */
-    protected function getRandomString():string {
+    protected function getRandomString(): string
+    {
         // random id
-		$random = '';
-		for ($i = 0; $i < 10; ++$i) {
-			$random .= dechex(mt_rand());
-		}
-		return uniqid($random, true);
+        $random = "";
+        for ($i = 0; $i < 10; ++$i) {
+            $random .= dechex(mt_rand());
+        }
+        return uniqid($random, true);
     }
 }
