@@ -1,39 +1,39 @@
 {
-    "name": "cturbelin/rserve-php",
-    "type": "library",
-    "description": "Rserve client library for PHP",
-    "keywords": ["R","Rserve","Stats"],
-    "homepage": "https://github.com/cturbelin/rserve-php",
-    "licence": "LGPL-2.1",
-    "authors": [
-        {
-            "name": "Clément Turbelin",
-            "email": "clement.turbelin@gmail.com"
-        }
-    ],
-    "require": {
-        "php": ">=7.4"
-    },
-    "require-dev": {
-       "phpunit/phpunit": "^9",
-        "symplify/easy-coding-standard": "^12.0"
-    }, 
-    "autoload": {
-        "files": ["src/lib/helpers.php"],
-        "psr-4": {
-            "Sentiweb\\Rserve\\": "src/",
-            "Sentiweb\\Rserve\\Tests\\":"tests/"
-        }
-     },
-     "autoload-dev": {
-        "psr-4" : { 
-            "Sentiweb\\Rserve\\Tests\\":"tests/" 
-        }
-     },
-     "scripts": {
-       "test": [
-          "parallel-lint . --exclude vendor --exclude doc",
-          "phpunit --verbose"
-       ]
-    } 
+  "name": "piogaw/rserve-php",
+  "type": "library",
+  "description": "Rserve client library for PHP",
+  "keywords": ["R", "Rserve", "Stats"],
+  "homepage": "https://github.com/cturbelin/rserve-php",
+  "licence": "LGPL-2.1",
+  "authors": [
+    {
+      "name": "Clément Turbelin",
+      "email": "clement.turbelin@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^9",
+    "symplify/easy-coding-standard": "^12.0"
+  },
+  "autoload": {
+    "files": ["src/lib/helpers.php"],
+    "psr-4": {
+      "Sentiweb\\Rserve\\": "src/",
+      "Sentiweb\\Rserve\\Tests\\": "tests/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Sentiweb\\Rserve\\Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "test": [
+      "parallel-lint . --exclude vendor --exclude doc",
+      "phpunit --verbose"
+    ]
+  }
 }
