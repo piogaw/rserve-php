@@ -1,14 +1,9 @@
+# Change Log
+ 
+All notable changes to this project will be documented in this file.
 
-# 2.1
+The format is based on [Keep a Changelog](http://keepachangelog.com/) and this project adheres to [Semantic Versioning](http://semver.org/).
 
-- Minimum php version 7.4
-- Fix php 8.0 compatibilites for NativeArray
-- Adapt code style for php 7.4, adding types
+## [Unreleased]
 
-# 2.0
-
-- All classes are declared under Sentiweb\Rserve namespace allowing PSR-4 autoloading
-- Parsers are now individualized into classes
-- A Parser instance can be directly used as second argument of evalString() to replace default parser (see example)
-
-# Before TDB
+Initial release. Forked from https://github.com/cturbelin/rserve-php. This is v2.1 of that package, adapted to PHP 7.3.
